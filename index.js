@@ -1,14 +1,17 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.token;
-const welcomeChannelName = "안녕하세요";
+const welcomeChannelName = "노는방";
 const byeChannelName = "안녕히가세요";
-const welcomeChannelComment = "어서오세요.";
+const welcomeChannelComment = "환영합니다!\n 기본 역할이 자동 지급되었습니다.\n봇의 명령어가 궁금하시다면  Corona Bot: c?  SJ Bot: 도움말 을 입력하셔서 확인하실수 있습니다.";
 const byeChannelComment = "안녕히가세요.";
 
 client.on('ready', () => {
   console.log('켰다.');
+  client.user.setPresence({ game: { name: 'Corona Bot이 작동' }, status: 'online' })
 });
+
+
 
 client.on("guildMemberAdd", (member) => {
   const guild = member.guild;
@@ -34,13 +37,14 @@ client.on('message', (message) => {
   if(message.content == '코로나봇아') {
     return message.reply('무엇을 도와드릴까요?');
   }
+  
 
   if(message.content == 'c정보') {
     let img = 'https://cafe.naver.com/common/storyphoto/viewer.html?src=https%3A%2F%2Fcafefiles.pstatic.net%2FMjAyMDA1MjVfMTcy%2FMDAxNTkwMzkwNDUxMDM4.DcHwRmi0mltWm1Rv7zqFcRYzuSUwz06EkGMluwNq-FUg.ZGaza82BNhBSwsdwbwTRZs61Ow7PraQs3CoQqkgMFfwg.JPEG%2Fbot_pf.jpg';
     let embed = new Discord.RichEmbed()
       .setTitle('Corona Bot')
-      .setURL('http://www.naver.com')
-      .setAuthor('Corona Bot', img, 'http://www.naver.com')
+      .setURL('http://www.cafe.naver.com')
+      .setAuthor('Corona Bot', img, 'http://www.cafe.naver.com')
       .setThumbnail(img)
       .addBlankField()
       .addField('저으 탄생일(?)은..', '2020년05월25일 이예요!')
@@ -51,15 +55,28 @@ client.on('message', (message) => {
       .addBlankField()
       .setTimestamp()
       .setFooter('Corona', img)
+      if(message.content == 'c정보') {
+        let img = 'https://cafe.naver.com/common/storyphoto/viewer.html?src=https%3A%2F%2Fcafefiles.pstatic.net%2FMjAyMDA1MjVfMTcy%2FMDAxNTkwMzkwNDUxMDM4.DcHwRmi0mltWm1Rv7zqFcRYzuSUwz06EkGMluwNq-FUg.ZGaza82BNhBSwsdwbwTRZs61Ow7PraQs3CoQqkgMFfwg.JPEG%2Fbot_pf.jpg';
+        let embed = new Discord.RichEmbed()
+          .setTitle('만나서 반가워요!')
+          .setURL('http://www.cafe.naver.com')
+          .setAuthor('안녕하세요!', img, 'http://www.cafe.naver.com')
+          .setThumbnail(img)
+          .addBlankField()
+          .addField('', '제가 할수있는 일은 c?를 입력하셔서 확인하실수 있어요!')
+          .setFooter('Corona', img)
 
     message.channel.send(embed)
   } else if(message.content == 'c?') {
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
-    let commandList = [
+    let commandList = [{name: 'Corona Bot 도움말 NO.2',desc:' '},
       {name: 'c청소 (할개수(최대99개))', desc: '메세지를 삭제합니다!'},
-      {name: '인사', desc: '새로운 회원이 들어오면 자동으로 인사합니다!'},
-      {name: '자동역할부여', desc: '자동으로 역할을 부여합니다!'},
+      {name: '입장 인사', desc: '새로운 회원이 들어오면 자동으로 인사합니다!'},
+      {name: '퇴장 인사', desc: '회원이 나가면 잘가라는(?)인사를 합니다!'},
+      {name: '자동역할부여', desc: '서버에 참여시 자동으로 기본 역할을 부여합니다!'},
       {name: 'c전체공지', desc: 'dm으로 전체 공지 보냅니다!'},
+      {name: 'c초대코드', desc: '해당서버의 초대코드를 생성합니다.'},
+      {name: ' ',desc: '\n© 2020 Corona, All rights reserved'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
@@ -75,6 +92,11 @@ client.on('message', (message) => {
     embed.addField('Commands: ', commandStr);
 
     message.channel.send(embed)
+  }else if(message.content == 'c초대코드') {
+    message.guild.channels.get(message.channel.id).createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
+      .then(invite => {
+        message.channel.send(invite.url)
+      });
   }
 
   if(message.content.startsWith('c전체공지')) {
@@ -128,7 +150,7 @@ if(message.content.startsWith('c청소')) {
       .catch(console.error)
   }
 }
-});
+}});
 
 function checkPermission(message) {
 if(!message.member.hasPermission("MANAGE_MESSAGES")) {
