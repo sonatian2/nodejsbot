@@ -36,11 +36,12 @@ client.on('message', (message) => {
 
   if(message.content == '코로나봇아') {
     return message.reply('무엇을 도와드릴까요?');
+    
   }
   
 
   if(message.content == 'c정보') {
-    let img = 'https://cafe.naver.com/common/storyphoto/viewer.html?src=https%3A%2F%2Fcafefiles.pstatic.net%2FMjAyMDA1MjVfMTcy%2FMDAxNTkwMzkwNDUxMDM4.DcHwRmi0mltWm1Rv7zqFcRYzuSUwz06EkGMluwNq-FUg.ZGaza82BNhBSwsdwbwTRZs61Ow7PraQs3CoQqkgMFfwg.JPEG%2Fbot_pf.jpg';
+    let img = 'https://discordapp.com/channels/713666957467189349/714828023093788752/715066715771502603';
     let embed = new Discord.RichEmbed()
       .setTitle('Corona Bot')
       .setURL('http://www.cafe.naver.com')
@@ -55,27 +56,20 @@ client.on('message', (message) => {
       .addBlankField()
       .setTimestamp()
       .setFooter('Corona', img)
-      if(message.content == 'c정보') {
-        let img = 'https://cafe.naver.com/common/storyphoto/viewer.html?src=https%3A%2F%2Fcafefiles.pstatic.net%2FMjAyMDA1MjVfMTcy%2FMDAxNTkwMzkwNDUxMDM4.DcHwRmi0mltWm1Rv7zqFcRYzuSUwz06EkGMluwNq-FUg.ZGaza82BNhBSwsdwbwTRZs61Ow7PraQs3CoQqkgMFfwg.JPEG%2Fbot_pf.jpg';
-        let embed = new Discord.RichEmbed()
-          .setTitle('만나서 반가워요!')
-          .setURL('http://www.cafe.naver.com')
-          .setAuthor('안녕하세요!', img, 'http://www.cafe.naver.com')
-          .setThumbnail(img)
-          .addBlankField()
-          .addField('', '제가 할수있는 일은 c?를 입력하셔서 확인하실수 있어요!')
-          .setFooter('Corona', img)
 
     message.channel.send(embed)
   } else if(message.content == 'c?') {
-    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+    let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.webp?size=256';
     let commandList = [{name: 'Corona Bot 도움말 NO.2',desc:' '},
+      {name: '안녕', desc: '제가 인사해 드립니다!'}, 
+      {name: '코로나봇아', desc: '저를 부릅니다!'},
       {name: 'c청소 (할개수(최대99개))', desc: '메세지를 삭제합니다!'},
       {name: '입장 인사', desc: '새로운 회원이 들어오면 자동으로 인사합니다!'},
       {name: '퇴장 인사', desc: '회원이 나가면 잘가라는(?)인사를 합니다!'},
       {name: '자동역할부여', desc: '서버에 참여시 자동으로 기본 역할을 부여합니다!'},
       {name: 'c전체공지', desc: 'dm으로 전체 공지 보냅니다!'},
       {name: 'c초대코드', desc: '해당서버의 초대코드를 생성합니다.'},
+      {name: 'c미국 @(추방할사람)', desc: '해당 회원을 미국(?)으로 보내버립니다!'},
       {name: ' ',desc: '\n© 2020 Corona, All rights reserved'},
     ];
     let commandStr = '';
@@ -90,6 +84,27 @@ client.on('message', (message) => {
     });
 
     embed.addField('Commands: ', commandStr);
+    message.channel.send(embed)
+} else if(message.content == 'c??') {
+  let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
+  let commandList = [{name: '아래기능은 관리자 기능입니다.',desc:' '},
+    {name: 'c청소 (할개수(최대99개))', desc: '메세지를 삭제합니다!'},
+    {name: 'c전체공지', desc: 'dm으로 전체 공지 보냅니다!'},
+    {name: 'c미국 @(추방할사람)', desc: '해당 회원을 미국(?)으로 보내버립니다!'},
+    {name: ' ',desc: '\n© 2020 Corona, All rights reserved'},
+  ];
+  let commandStr = '';
+  let embed = new Discord.RichEmbed()
+    .setAuthor('Corona Bot', helpImg)
+    .setColor('#186de6')
+    .setFooter(`Corona Bot`)
+    .setTimestamp()
+  
+  commandList.forEach(x => {
+    commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
+  });
+
+  embed.addField('Commands: ', commandStr);
 
     message.channel.send(embed)
   }else if(message.content == 'c초대코드') {
@@ -114,14 +129,16 @@ client.on('message', (message) => {
     }
   }
 
+
+
 if(message.content.startsWith('c청소')) {
   if(checkPermission(message)) return
 
   var clearLine = message.content.slice('c청소 '.length);
   var isNum = !isNaN(clearLine)
 
-  if(isNum && (clearLine <= 0 || 100 < clearLine)) {
-    message.channel.send("1부터 100까지의 숫자만 입력해주세요.")
+  if(isNum && (clearLine <= 0 || 100000 < clearLine)) {
+    message.channel.send("1부터 100000까지의 숫자만 입력해주세요.")
     return;
   } else if(!isNum) { // c @나긋해 3
     if(message.content.split('<@').length == 2) {
@@ -150,35 +167,36 @@ if(message.content.startsWith('c청소')) {
       .catch(console.error)
   }
 }
-}});
+});
 
 function checkPermission(message) {
-if(!message.member.hasPermission("MANAGE_MESSAGES")) {
-  message.channel.send(`<@${message.author.id}> ` + "명령어를 수행할 관리자 권한을 소지하고 있지않습니다.")
-  return true;
-} else {
-  return false;
-}
-}
-
-function changeCommandStringLength(str, limitLen = 8) {
-let tmp = str;
-limitLen -= tmp.length;
-
-for(let i=0;i<limitLen;i++) {
-    tmp += ' ';
-}
-
-return tmp;
-}
-
-async function AutoMsgDelete(message, str, delay = 3000) {
-let msg = await message.channel.send(str);
-
-setTimeout(() => {
-  msg.delete();
-}, delay);
-}
-
-
-client.login(token);
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) {
+      message.channel.send(`<@${message.author.id}> ` + "명령어를 수행할 관리자 권한을 소지하고 있지않습니다.")
+      return true;
+    } else {
+      return false;
+    }
+    }
+    
+    function changeCommandStringLength(str, limitLen = 8) {
+    let tmp = str;
+    limitLen -= tmp.length;
+    
+    for(let i=0;i<limitLen;i++) {
+        tmp += ' ';
+    }
+    
+    return tmp;
+    }
+    
+    async function AutoMsgDelete(message, str, delay = 3000) {
+    let msg = await message.channel.send(str);
+    
+    setTimeout(() => {
+      msg.delete();
+    }, delay);
+    }
+    
+    
+    client.login(token);
+    
