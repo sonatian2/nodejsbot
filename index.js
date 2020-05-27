@@ -3,8 +3,8 @@ const client = new Discord.Client();
 const token = process.env.token;
 const welcomeChannelName = "노는방";
 const byeChannelName = "안녕히가세요";
-const welcomeChannelComment = "환영합니다!\n 기본 역할이 자동 지급되었습니다.\n봇의 명령어가 궁금하시다면  Corona Bot: c?  SJ Bot: 도움말 을 입력하셔서 확인하실수 있습니다.";
-const byeChannelComment = "안녕히가세요.";
+const welcomeChannelComment = "환영합니다!\n 기본 역할이 자동 지급되었습니다.\n봇의 명령어가 궁금하시다면  Corona Bot: c?  SJ Bot: 도움말 SIMSIM Bot: s? 를 입력하셔서 확인하실수 있습니다.";
+const byeChannelComment = "안녕히가세요ㅠㅠ";
 
 client.on('ready', () => {
   console.log('켰다.');
