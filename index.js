@@ -48,7 +48,7 @@ client.on('message', (message) => {
       .setAuthor('Corona Bot', img, 'http://www.cafe.naver.com')
       .setThumbnail(img)
       .addBlankField()
-      .addField('저으 탄생일(?)은..', '2020년05월25일 이예요!')
+      .addField('저의 탄생일(?)은..', '2020년05월25일 이예요!')
       .addField('저의 개발자는...', 'Corona님 이예요!', true)
       .addField('제가 할수있는일은...', 'c?라고 쳐보세요!ㅎㅎ', false)
       .addField('봇에 오류가 있으면...', '저의 주인님인 Corona님을 불러주세요!', false)
@@ -85,7 +85,9 @@ client.on('message', (message) => {
 
     embed.addField('Commands: ', commandStr);
     message.channel.send(embed)
-} else if(message.content == 'c??') {
+    
+  
+} else if(message.content == '안녕') {
   let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
   let commandList = [{name: '아래기능은 관리자 기능입니다.',desc:' '},
     {name: 'c청소 (할개수(최대99개))', desc: '메세지를 삭제합니다!'},
@@ -105,6 +107,18 @@ client.on('message', (message) => {
   });
 
   embed.addField('Commands: ', commandStr);
+
+  if(message.content == '안녕') {
+    let img = 'https://discordapp.com/channels/713666957467189349/714828023093788752/715066715771502603';
+    let embed = new Discord.RichEmbed()
+      .setTitle('Corona Bot')
+      .setURL('http://www.cafe.naver.com')
+      .setAuthor('안녕하세요!', img, 'http://www.cafe.naver.com')
+      .setThumbnail(img)
+      .addBlankField()
+      .addField(' ', '만나서 반가워요!!')
+   
+    message.channel.send(embed)
 
     message.channel.send(embed)
   }else if(message.content == 'c초대코드') {
