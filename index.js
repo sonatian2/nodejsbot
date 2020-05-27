@@ -98,7 +98,7 @@ client.on('message', (message) => {
   let commandStr = '';
   let embed = new Discord.RichEmbed()
     .setAuthor('Corona Bot', helpImg)
-    .setColor('#186de6')
+    .setColor('#0x00ff00')
     .setFooter(`Corona Bot`)
     .setTimestamp()
   
