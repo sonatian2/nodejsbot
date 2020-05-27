@@ -98,7 +98,7 @@ client.on('message', (message) => {
   let commandStr = '';
   let embed = new Discord.RichEmbed()
     .setAuthor('Corona Bot', helpImg)
-    .setColor('#0x00ff00')
+    .setColor('#186de6')
     .setFooter(`Corona Bot`)
     .setTimestamp()
   
@@ -106,21 +106,12 @@ client.on('message', (message) => {
     commandStr += `• \`\`${changeCommandStringLength(`${x.name}`)}\`\` : **${x.desc}**\n`;
   });
 
-  embed.addField('Commands: ', commandStr);
-
-  if(message.content == '안녕') {
-    let img = 'https://discordapp.com/channels/713666957467189349/714828023093788752/715066715771502603';
-    let embed = new Discord.RichEmbed()
-      .setTitle('Corona Bot')
-      .setURL('http://www.cafe.naver.com')
-      .setAuthor('안녕하세요!', img, 'http://www.cafe.naver.com')
-      .setThumbnail(img)
-      .addBlankField()
-      .addField(' ', '만나서 반가워요!!')
-   
+  
+    embed.addField('Commands: ', commandStr);
     message.channel.send(embed)
+    
 
-    message.channel.send(embed)
+ 
   }else if(message.content == 'c초대코드') {
     message.guild.channels.get(message.channel.id).createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
       .then(invite => {
