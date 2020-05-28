@@ -70,6 +70,7 @@ client.on('message', (message) => {
       {name: 'c전체공지', desc: 'dm으로 전체 공지 보냅니다!'},
       {name: 'c초대코드', desc: '해당서버의 초대코드를 생성합니다.'},
       {name: 'c미국 @(추방할사람)', desc: '해당 회원을 미국(?)으로 보내버립니다!'},
+      {name: 'c! (할말)', desc: 'Corona Ai 대답합니다!'},
       {name: ' ',desc: '\n© 2020 Corona, All rights reserved'},
     ];
     let commandStr = '';
@@ -87,7 +88,7 @@ client.on('message', (message) => {
     message.channel.send(embed)
     
   
-} else if(message.content == '안녕') {
+} else if(message.content == 'c?') {
   let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
   let commandList = [{name: '아래기능은 관리자 기능입니다.',desc:' '},
     {name: 'c청소 (할개수(최대99개))', desc: '메세지를 삭제합니다!'},
