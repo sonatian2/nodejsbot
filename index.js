@@ -88,7 +88,7 @@ client.on('message', (message) => {
     message.channel.send(embed)
     
   
-} else if(message.content == 'c?') {
+} else if(message.content == 'c??') {
   let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
   let commandList = [{name: '아래기능은 관리자 기능입니다.',desc:' '},
     {name: 'c청소 (할개수(최대99개))', desc: '메세지를 삭제합니다!'},
