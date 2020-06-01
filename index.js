@@ -59,6 +59,8 @@ client.on('message', (message) => {
 
     message.channel.send(embed)
   } else if(message.content == 'c?') {
+    
+      message.react('😄');
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.webp?size=256';
     let commandList = [{name: 'Corona Bot 도움말 NO.2',desc:' '},
       {name: '안녕', desc: '제가 인사해 드립니다!'}, 
