@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const token = process.env.token;
 const welcomeChannelName = "노는방";
 const byeChannelName = "안녕히가세요";
-const welcomeChannelComment = "환영합니다!\n 기본 역할이 자동 지급되었습니다.\n봇의 명령어가 궁금하시다면  Corona Bot: c?  SJ Bot: 도움말 SIMSIM Bot: s? 를 입력하셔서 확인하실수 있습니다.";
+const welcomeChannelComment = "환영합니다!\n 기본 역할이 자동 지급되었습니다.\n봇의 명령어가 궁금하시다면  c? 를 입력하셔서 확인하실수 있습니다.";
 const byeChannelComment = "안녕히가세요ㅠㅠ";
 
 client.on('ready', () => {
@@ -72,7 +72,9 @@ client.on('message', (message) => {
       {name: 'c전체공지', desc: 'dm으로 전체 공지 보냅니다!'},
       {name: 'c초대코드', desc: '해당서버의 초대코드를 생성합니다.'},
       {name: 'c미국 @(추방할사람)', desc: '해당 회원을 미국(?)으로 보내버립니다!'},
-      {name: 'c! (할말)', desc: 'Corona Ai 대답합니다!'},
+      {name: 'c! (할말)', desc: 'Corona Ai 대답합니다! (BETA)'},
+      {name: 'c정보', desc: 'Corona Bot에대한 정보를 출력합니다!'},
+      {name: 'c반응', desc: '당신의 말에 반응합니다. (BETA)'},
       {name: ' ',desc: '\n© 2020 Corona, All rights reserved'},
     ];
     let commandStr = '';
@@ -145,8 +147,8 @@ if(message.content.startsWith('c청소')) {
   var clearLine = message.content.slice('c청소 '.length);
   var isNum = !isNaN(clearLine)
 
-  if(isNum && (clearLine <= 0 || 100000 < clearLine)) {
-    message.channel.send("1부터 100000까지의 숫자만 입력해주세요.")
+  if(isNum && (clearLine <= 0 || 100 < clearLine)) {
+    message.channel.send("1부터 100까지의 숫자만 입력해주세요.")
     return;
   } else if(!isNum) { // c @나긋해 3
     if(message.content.split('<@').length == 2) {
