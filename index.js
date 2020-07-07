@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const token = process.env.token;
 const welcomeChannelName = "👋입구👋";
 const byeChannelName = "👋입구👋";
-const welcomeChannelComment = "환영합니다!\n 기본 역할이 자동 지급되었습니다.\n봇의 명령어가 궁금하시다면  c? 를 입력하셔서 확인하실수 있습니다.";
+const welcomeChannelComment = "환영합니다!\n #📢공지📢 를 읽으신뒤 #🌟인증🌟 에 가주세요! \n봇의 명령어가 궁금하시다면  c? 를 입력하셔서 확인하실수 있습니다.";
 const byeChannelComment = "안녕히가세요ㅠㅠ";
 
 client.on('ready', () => {
