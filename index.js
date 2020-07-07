@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.token;
-const welcomeChannelName = "현관";
-const byeChannelName = "현관";
+const welcomeChannelName = "👋입구👋";
+const byeChannelName = "👋입구👋";
 const welcomeChannelComment = "환영합니다!\n 기본 역할이 자동 지급되었습니다.\n봇의 명령어가 궁금하시다면  c? 를 입력하셔서 확인하실수 있습니다.";
 const byeChannelComment = "안녕히가세요ㅠㅠ";
 
