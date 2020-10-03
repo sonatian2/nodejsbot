@@ -13,6 +13,7 @@ client.on('ready', () => {
 
 
 
+
 client.on("guildMemberAdd", (member) => {
   const guild = member.guild;
   const newUser = member.user;
